@@ -3,15 +3,22 @@ using UnityEngine.UI;
 
 public class GameLogical : MonoBehaviour
 {
+    public bool GameStart = false;
     private int Score = 0;
     private Text ScoreText;
     private Button PlayButton;
-    public bool GameStart = false;
-
+    private Rigidbody BallRB;
+    private GameObject Ball;
+    private GameObject Player;
+    private BlockSpawn BlockSpawn;
     private void Start()
     {
         ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         PlayButton = GameObject.Find("PlayButton").GetComponent<Button>();
+        BallRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
+        Ball = GameObject.Find("Ball");
+        Player = GameObject.Find("Player");
+        BlockSpawn = GameObject.Find("Blocks").GetComponent<BlockSpawn>();
 
         if (PlayButton != null)
             PlayButton.onClick.AddListener(StartGame);
@@ -29,28 +36,27 @@ public class GameLogical : MonoBehaviour
         ScoreText.text = $"Score: #";
         PlayButton.gameObject.SetActive(false);
 
-        var ballRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
-        var direction = new Vector3(-1, -1, 0).normalized;
-        ballRB.velocity = direction * 10f;
+        BallRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
+        BallRB.velocity = new Vector3(-1, -1, 0).normalized * 10f;
 
-        var blockSpawn = GameObject.Find("Blocks").GetComponent<BlockSpawn>();
-        blockSpawn.StartSpawn();
+        BlockSpawn = GameObject.Find("Blocks").GetComponent<BlockSpawn>();
+        BlockSpawn.StartSpawn();
     }
 
     public void GameOver()
     {
         GameStart = false;
 
-        var ball = GameObject.Find("Ball");
-        ball.transform.position = new Vector3(3, 5, 0);
-        var ballRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
-        ballRB.velocity = new Vector3(0, 0, 0);
+        Ball = GameObject.Find("Ball");
+        Ball.transform.position = new Vector3(3, 5, 0);
+        BallRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
+        BallRB.velocity = new Vector3(0, 0, 0);
 
-        var player = GameObject.Find("Player");
-        player.transform.position = new Vector3(0, 0.5f, 0);
+        Player = GameObject.Find("Player");
+        Player.transform.position = new Vector3(0, 0.5f, 0);
 
-        var blockSpawn = GameObject.Find("Blocks").GetComponent<BlockSpawn>();
-        blockSpawn.ClearAllBlocks();
+        BlockSpawn = GameObject.Find("Blocks").GetComponent<BlockSpawn>();
+        BlockSpawn.ClearAllBlocks();
 
         PlayButton.gameObject.SetActive(true);
     }

@@ -4,6 +4,20 @@ using UnityEngine;
 public class BlockSpawn : MonoBehaviour
 {
     private float spacing = 1f;
+    private GameObject SpawnObject;
+
+    private void Start()
+    {
+        SpawnObject = GameObject.Find("BaseBlock");
+    }
+
+    void Spawn(float x, float y)
+    {
+        SpawnObject = GameObject.Find("BaseBlock");
+        Vector3 position = new Vector3(x * spacing, 19 - y, 0);
+        var newBlock = Instantiate(SpawnObject, position, Quaternion.identity);
+        newBlock.tag = "Block";
+    }
 
     public void StartSpawn()
     {
@@ -14,14 +28,6 @@ public class BlockSpawn : MonoBehaviour
                 Spawn(s, r);
             }
         }
-    }
-
-    void Spawn(float x, float y)
-    {
-        var spawnObject = GameObject.Find("BaseBlock");
-        Vector3 position = new Vector3(x * spacing, 19 - y, 0);
-        var newBlock = Instantiate(spawnObject, position, Quaternion.identity);
-        newBlock.tag = "Block";
     }
 
     public void ClearAllBlocks()
