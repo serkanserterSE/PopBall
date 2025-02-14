@@ -46,7 +46,8 @@ public class GameLogical : MonoBehaviour
     public void GameOver()
     {
         GameStart = false;
-
+        Score = 0;
+        
         Ball = GameObject.Find("Ball");
         Ball.transform.position = new Vector3(3, 5, 0);
         BallRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
