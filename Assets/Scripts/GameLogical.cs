@@ -32,13 +32,26 @@ public class GameLogical : MonoBehaviour
         var ballRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
         var direction = new Vector3(-1, -1, 0).normalized;
         ballRB.velocity = direction * 10f;
+
+        var blockSpawn = GameObject.Find("Blocks").GetComponent<BlockSpawn>();
+        blockSpawn.StartSpawn();
     }
 
     public void GameOver()
     {
         GameStart = false;
+
         var ball = GameObject.Find("Ball");
         ball.transform.position = new Vector3(3, 5, 0);
+        var ballRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
+        ballRB.velocity = new Vector3(0, 0, 0);
+
+        var player = GameObject.Find("Player");
+        player.transform.position = new Vector3(0, 0.5f, 0);
+
+        var blockSpawn = GameObject.Find("Blocks").GetComponent<BlockSpawn>();
+        blockSpawn.ClearAllBlocks();
+
         PlayButton.gameObject.SetActive(true);
     }
 }

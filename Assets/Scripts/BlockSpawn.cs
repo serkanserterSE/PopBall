@@ -1,10 +1,11 @@
+using System.Threading;
 using UnityEngine;
 
 public class BlockSpawn : MonoBehaviour
 {
     private float spacing = 1f;
 
-    void Start()
+    public void StartSpawn()
     {
         for (int r = 1; r < 6; r++)
         {
@@ -18,8 +19,17 @@ public class BlockSpawn : MonoBehaviour
     void Spawn(float x, float y)
     {
         var spawnObject = GameObject.Find("BaseBlock");
-        spawnObject.tag = "Block";
         Vector3 position = new Vector3(x * spacing, 19 - y, 0);
-        Instantiate(spawnObject, position, Quaternion.identity);
+        var newBlock = Instantiate(spawnObject, position, Quaternion.identity);
+        newBlock.tag = "Block";
+    }
+
+    public void ClearAllBlocks()
+    {
+        var blocks = GameObject.FindGameObjectsWithTag("Block");
+        foreach (var block in blocks)
+        {
+            Destroy(block);
+        }
     }
 }
