@@ -354,6 +354,7 @@
 "Assets/Scripts/BallMove.cs"
 "Assets/Scripts/BlockFeatures.cs"
 "Assets/Scripts/BlockSpawn.cs"
+"Assets/Scripts/CoinFeatures.cs"
 "Assets/Scripts/GameLogical.cs"
 "Assets/Scripts/PlayerMove.cs"
 -langversion:9.0
