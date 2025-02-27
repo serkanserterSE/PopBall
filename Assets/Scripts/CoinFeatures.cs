@@ -16,6 +16,9 @@ public class CoinFeatures : MonoBehaviour
             }
         }
         else
+        {
             hitCounter++;
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
+        }
     }
 }

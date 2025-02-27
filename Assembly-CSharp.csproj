@@ -66,10 +66,27 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/CoinFeatures.cs" />
     <Compile Include="Assets/Scripts/BlockFeatures.cs" />
+    <Compile Include="Assets/AnimeNaturalEnvironment/Scripts/Cameras/MoveCamera.cs" />
+    <Compile Include="Assets/AnimeNaturalEnvironment/Scripts/Cameras/Scripts/FreeLookCam.cs" />
     <Compile Include="Assets/Scripts/PlayerMove.cs" />
     <Compile Include="Assets/Scripts/GameLogical.cs" />
     <Compile Include="Assets/Scripts/BlockSpawn.cs" />
     <Compile Include="Assets/Scripts/BallMove.cs" />
+    <Compile Include="Assets/AnimeNaturalEnvironment/Scripts/Cameras/Scripts/AbstractTargetFollower.cs" />
+    <Compile Include="Assets/AnimeNaturalEnvironment/Scripts/RenderTextureBaker.cs" />
+    <Compile Include="Assets/AnimeNaturalEnvironment/Scripts/Cameras/Scripts/PivotBasedCameraRig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/ASRock.shader" />
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/URPToonLit.shader" />
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/ASBledingGrass.shader" />
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/ASBledingRock.shader" />
+    <None Include="Assets/AnimeNaturalEnvironment/Scripts/Cameras/CameraGuidelines.txt" />
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/ASFolliage.shader" />
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/BillBoardGrass.shader" />
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/ASFolliage Standard.shader" />
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/ASBledingPlant.shader" />
+    <None Include="Assets/AnimeNaturalEnvironment/Shaders/ASBledingTrunk.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
