@@ -9,6 +9,7 @@ public class GameLogical : MonoBehaviour
     private Button PlayButton;
     private Rigidbody BallRB;
     private GameObject Ball;
+    public float BallSpeed = 10f;
     private GameObject Player;
     private BlockSpawn BlockSpawn;
     private void Start()
@@ -28,6 +29,8 @@ public class GameLogical : MonoBehaviour
     {
         Score += scoreValue;
         ScoreText.text = $"Score: {Score}";
+        if (Score % 5 == 0)
+            BallSpeed += 1f;
     }
 
     public void StartGame()
@@ -47,7 +50,7 @@ public class GameLogical : MonoBehaviour
     {
         GameStart = false;
         Score = 0;
-        
+
         Ball = GameObject.Find("Ball");
         Ball.transform.position = new Vector3(3, 5, 0);
         BallRB = GameObject.Find("Ball").GetComponent<Rigidbody>();

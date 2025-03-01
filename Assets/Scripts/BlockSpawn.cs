@@ -15,7 +15,7 @@ public class BlockSpawn : MonoBehaviour
     void SpawnBlock(float x, float y)
     {
         SpawnObject = GameObject.Find("BaseBlock");
-        Vector3 position = new Vector3(x * spacing, 19 - y, 0);
+        Vector3 position = new Vector3(x * spacing, 29 - y, 0);
         var newBlock = Instantiate(SpawnObject, position, Quaternion.identity);
         newBlock.tag = "Block";
     }
@@ -23,7 +23,7 @@ public class BlockSpawn : MonoBehaviour
     void SpawnCoin(float x, float y)
     {
         SpawnObject = GameObject.Find("BaseCoin");
-        Vector3 position = new Vector3(x * spacing, 19 - y, 0);
+        Vector3 position = new Vector3(x * spacing, 29 - y, 0);
         var newBlock = Instantiate(SpawnObject, position, Quaternion.identity);
         newBlock.tag = "Block";
     }

@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class BallMove : MonoBehaviour
 {
-    private float BallSpeed = 10f;
     private Rigidbody BallRB;
     private GameLogical Logical;
 
     void Start()
     {
         BallRB = GetComponent<Rigidbody>();
-        Logical = GameObject.FindGameObjectWithTag("Logical").GetComponent<GameLogical>(); 
+        Logical = GameObject.FindGameObjectWithTag("Logical").GetComponent<GameLogical>();
     }
 
     void FixedUpdate()
     {
         if (Logical.GameStart)
-            BallRB.velocity = BallRB.velocity.normalized * BallSpeed;
+            BallRB.velocity = BallRB.velocity.normalized * Logical.BallSpeed;
+
+        Debug.Log(BallRB.velocity);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -28,6 +29,6 @@ public class BallMove : MonoBehaviour
 
         Vector3 normal = collision.contacts[0].normal;
         var direction = Vector3.Reflect(BallRB.velocity, normal);
-        BallRB.velocity = direction * BallSpeed;
+        BallRB.velocity = (direction * Logical.BallSpeed).normalized;
     }
 }
